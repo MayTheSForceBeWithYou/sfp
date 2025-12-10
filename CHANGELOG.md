@@ -1,5 +1,30 @@
 # Changelog
 
+## [39.8.0](https://github.com/flxbl-io/sfp/compare/v39.7.0...v39.8.0) (2025-08-25)
+
+
+### Features
+
+* **docker:** update docker with latest cli versions ([783787e](https://github.com/flxbl-io/sfp/commit/783787e5dc2d6dd0d0745871bee07a71d60aae90))
+
+
+### Bug Fixes
+
+* **wf:** update to pre release ([d8391c8](https://github.com/flxbl-io/sfp/commit/d8391c8d92e7cfa6286df92a32089b3f32ab88c1))
+
+## [39.7.0](https://github.com/flxbl-io/sfp/compare/v39.6.1...v39.7.0) (2025-08-25)
+
+
+### Features
+
+* **deployment:** Use native SF polling instead of hard coded 30 seconds ([#176](https://github.com/flxbl-io/sfp/issues/176)) ([3b46046](https://github.com/flxbl-io/sfp/commit/3b460461892564df54df478328d57bf8b43ff10a))
+* upgrade salesforce dependencies and migrate to oclif v4 ([#180](https://github.com/flxbl-io/sfp/issues/180)) ([9fa2e8e](https://github.com/flxbl-io/sfp/commit/9fa2e8e4a47207c9f23a6613eb1687583fea8d57))
+
+
+### Bug Fixes
+
+* **tests:** add space in log messages for better readability ([#168](https://github.com/flxbl-io/sfp/issues/168)) ([891e2a1](https://github.com/flxbl-io/sfp/commit/891e2a1580805936ff94388cc63aecce8efd016d))
+
 ## [39.6.1](https://github.com/flxbl-io/sfp/compare/v39.6.0...v39.6.1) (2025-06-26)
 
 

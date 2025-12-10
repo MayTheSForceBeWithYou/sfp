@@ -16,13 +16,39 @@ export const DEFAULT_NETWORK_RETRY_CONFIG: RetryConfig = {
     enableJitter: true,
 };
 
+// Type guard for error objects with code property
+interface ErrorWithCode extends Error {
+    code?: string;
+}
+
+// Type guard for error-like objects
+interface ErrorLike {
+    message?: string;
+    code?: string;
+    toString?: () => string;
+}
+
 export class NetworkErrorHandler {
     /**
+     * Type guard to check if value is an Error object with optional code property
+     */
+    private static isErrorWithCode(error: unknown): error is ErrorWithCode {
+        return error instanceof Error;
+    }
+
+    /**
+     * Type guard to check if value is an error-like object
+     */
+    private static isErrorLike(error: unknown): error is ErrorLike {
+        return error !== null && typeof error === 'object';
+    }
+
+    /**
      * Checks if an error is a network-related error that should be retried
-     * @param error - The error to check (can be string, Error object, or any)
+     * @param error - The error to check (can be string, Error object, or unknown)
      * @returns true if it's a retryable network error
      */
-    static isNetworkError(error: any): boolean {
+    static isNetworkError(error: unknown): boolean {
         const networkErrorCodes = [
             'ECONNRESET',
             'ECONNREFUSED', 
@@ -66,18 +92,25 @@ export class NetworkErrorHandler {
         let errorString: string = '';
         let errorCode: string = '';
 
-        // Handle different error types
+        // Handle different error types with proper type guards
         if (typeof error === 'string') {
             errorString = error.toLowerCase();
-        } else if (error instanceof Error) {
+        } else if (this.isErrorWithCode(error)) {
             errorString = error.message.toLowerCase();
-            errorCode = (error as any).code || '';
-        } else if (error && typeof error === 'object') {
+            errorCode = error.code || '';
+        } else if (this.isErrorLike(error)) {
             // Handle structured error objects
             const message = error.message || '';
             const toString = error.toString ? error.toString() : '';
             errorString = (message || toString).toLowerCase();
             errorCode = error.code || '';
+        } else {
+            // For any other type, try to convert to string
+            try {
+                errorString = String(error).toLowerCase();
+            } catch {
+                return false;
+            }
         }
 
         // Check error codes
@@ -133,7 +166,7 @@ export class NetworkErrorHandler {
      * @returns true if the error should be retried
      */
     static shouldRetryNetworkError(
-        error: any,
+        error: unknown,
         attemptNumber: number,
         config: RetryConfig
     ): boolean {
@@ -155,7 +188,7 @@ export class NetworkErrorHandler {
      * @param logger - Logger instance
      */
     static logRetryAttempt(
-        error: any,
+        error: unknown,
         attemptNumber: number,
         maxRetries: number,
         delayMs: number,
@@ -209,15 +242,27 @@ export class NetworkErrorHandler {
      * @param error - The error to extract message from
      * @returns human-readable error message
      */
-    private static extractErrorMessage(error: any): string {
+    private static extractErrorMessage(error: unknown): string {
         if (typeof error === 'string') {
             return error;
-        } else if (error instanceof Error) {
+        } else if (this.isErrorWithCode(error)) {
             return error.message;
-        } else if (error && typeof error === 'object') {
-            return error.message || error.toString();
+        } else if (this.isErrorLike(error)) {
+            const message = error.message;
+            if (typeof message === 'string') {
+                return message;
+            }
+            if (error.toString) {
+                return error.toString();
+            }
         }
-        return 'Unknown error';
+        
+        // Fallback: try to convert to string
+        try {
+            return String(error);
+        } catch {
+            return 'Unknown error';
+        }
     }
 
     /**

@@ -6,19 +6,10 @@ export type PackageInstallationResult = {
     isPreScriptExecutionSuceeded?: boolean;
     isPostScriptExecutionSuceeeded?:boolean;
     numberOfComponentsDeployed?:number;
-    errorType?: ErrorType;
 };
 
 export enum PackageInstallationStatus {
     Skipped,
     Succeeded,
     Failed,
-}
-
-export enum ErrorType {
-    NetworkError,
-    ValidationError,
-    ConfigurationError,
-    BackgroundJobError,
-    UnknownError,
 }

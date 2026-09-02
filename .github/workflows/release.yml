@@ -45,7 +45,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           token: ${{ secrets.NPM_TOKEN }}
           registry-url: 'https://registry.npmjs.org'
 
@@ -179,5 +179,4 @@ jobs:
       signing_secret: ${{ secrets.SIGNING_SECRET }}
       cosign_password:  ${{ secrets.COSIGN_PASSWORD }}
     needs: [ build-docker-lite ]
-
 

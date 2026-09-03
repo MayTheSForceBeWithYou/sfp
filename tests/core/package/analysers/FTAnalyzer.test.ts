@@ -3,7 +3,7 @@ import FTAnalyser from '../../../../src/core/package/analyser/FTAnalyzer';
 import SfpPackage, { PackageType } from '../../../../src/core/package/SfpPackage';
 const fs = require('fs-extra');
 import { ComponentSet, SourceComponent, registry, VirtualDirectory } from '@salesforce/source-deploy-retrieve';
-import { VoidLogger } from '@flxbl-io/sfp-logger';
+import { VoidLogger } from '@n8codes/sfp-logger';
 
 let isYamlFileFound: boolean = true;
 

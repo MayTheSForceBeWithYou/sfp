@@ -2,7 +2,7 @@ import BuildImpl, { BuildProps } from '../parallelBuilder/BuildImpl';
 import DeployImpl, { DeploymentMode, DeployProps, DeploymentResult } from '../deploy/DeployImpl';
 import ArtifactGenerator from '../../core/artifacts/generators/ArtifactGenerator';
 import { Stage } from '../Stage';
-import SFPLogger, { COLOR_KEY_VALUE, ConsoleLogger, Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { COLOR_KEY_VALUE, ConsoleLogger, Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import {
     PackageInstallationResult,
     PackageInstallationStatus,
@@ -13,12 +13,12 @@ import { Org } from '@salesforce/core';
 import InstalledArtifactsDisplayer from '../../core/display/InstalledArtifactsDisplayer';
 import ValidateError from '../../errors/ValidateError';
 import ScratchOrg from '../../core/scratchorg/ScratchOrg';
-import { COLOR_KEY_MESSAGE } from '@flxbl-io/sfp-logger';
-import { COLOR_WARNING } from '@flxbl-io/sfp-logger';
-import { COLOR_ERROR } from '@flxbl-io/sfp-logger';
-import { COLOR_HEADER } from '@flxbl-io/sfp-logger';
-import { COLOR_SUCCESS } from '@flxbl-io/sfp-logger';
-import { COLOR_TIME } from '@flxbl-io/sfp-logger';
+import { COLOR_KEY_MESSAGE } from '@n8codes/sfp-logger';
+import { COLOR_WARNING } from '@n8codes/sfp-logger';
+import { COLOR_ERROR } from '@n8codes/sfp-logger';
+import { COLOR_HEADER } from '@n8codes/sfp-logger';
+import { COLOR_SUCCESS } from '@n8codes/sfp-logger';
+import { COLOR_TIME } from '@n8codes/sfp-logger';
 import SFPStatsSender from '../../core/stats/SFPStatsSender';
 import ScratchOrgInfoFetcher from '../../core/scratchorg/pool/services/fetchers/ScratchOrgInfoFetcher';
 import ScratchOrgInfoAssigner from '../../core/scratchorg/pool/services/updaters/ScratchOrgInfoAssigner';

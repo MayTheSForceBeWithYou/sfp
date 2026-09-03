@@ -1,4 +1,4 @@
-import SFPLogger, {COLOR_HEADER, COLOR_KEY_MESSAGE, ConsoleLogger, Logger, LoggerLevel} from "@flxbl-io/sfp-logger";
+import SFPLogger, {COLOR_HEADER, COLOR_KEY_MESSAGE, ConsoleLogger, Logger, LoggerLevel} from "@n8codes/sfp-logger";
 
 export default class CommandHeaderDisplayer {
 

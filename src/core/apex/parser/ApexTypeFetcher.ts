@@ -14,7 +14,7 @@ import {
     CommonTokenStream,
     ParseTreeWalker,
 } from '@apexdevtools/apex-parser';
-import SFPLogger, { LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { LoggerLevel } from '@n8codes/sfp-logger';
 import { ApexClasses } from '../../package/SfpPackage';
 
 /**

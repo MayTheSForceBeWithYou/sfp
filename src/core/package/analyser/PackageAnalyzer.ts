@@ -1,4 +1,4 @@
-import { Logger } from "@flxbl-io/sfp-logger";
+import { Logger } from "@n8codes/sfp-logger";
 import { ComponentSet } from "@salesforce/source-deploy-retrieve";
 import SfpPackage from "../SfpPackage";
 

@@ -1,5 +1,5 @@
 import ReleaseConfigLoader from './ReleaseConfigLoader'; // Assuming this is the file you provided
-import { Logger } from '@flxbl-io/sfp-logger';
+import { Logger } from '@n8codes/sfp-logger';
 
 export class ReleaseConfigAggregator {
 

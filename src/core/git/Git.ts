@@ -1,4 +1,4 @@
-import SFPLogger, { Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import simplegit, { SimpleGit } from 'simple-git';
 import fs = require('fs-extra');
 import path = require('path');

@@ -1,17 +1,17 @@
-`@flxbl-io/sfp commands`
+`@n8codes/sfp commands`
 ========================
 
 list all the commands
 
-* [`@flxbl-io/sfp commands`](#flxbl-iosfp-commands)
+* [`@n8codes/sfp commands`](#flxbl-iosfp-commands)
 
-## `@flxbl-io/sfp commands`
+## `@n8codes/sfp commands`
 
 list all the commands
 
 ```
 USAGE
-  $ @flxbl-io/sfp commands [--json] [-h] [--hidden] [--tree] [--columns <value> | -x] [--filter <value>]
+  $ @n8codes/sfp commands [--json] [-h] [--hidden] [--tree] [--columns <value> | -x] [--filter <value>]
     [--no-header | [--csv | --no-truncate]] [--output csv|json|yaml |  | ] [--sort <value>]
 
 FLAGS

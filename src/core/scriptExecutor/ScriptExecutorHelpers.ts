@@ -1,5 +1,5 @@
-import ExecuteCommand from '@flxbl-io/sfdx-process-wrapper/lib/commandExecutor/ExecuteCommand';
-import SFPLogger, { Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import ExecuteCommand from '@n8codes/sfdx-process-wrapper/lib/commandExecutor/ExecuteCommand';
+import SFPLogger, { Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import defaultShell from '../utils/DefaultShell';
 
 export default class scriptExecutorHelpers {

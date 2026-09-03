@@ -1,6 +1,6 @@
 const Table = require('cli-table');
 import DependencyViolation from '../dependency/DependencyViolation';
-import SFPLogger from '@flxbl-io/sfp-logger';
+import SFPLogger from '@n8codes/sfp-logger';
 import { ZERO_BORDER_TABLE } from './TableConstants';
 
 export default class DependencyViolationDisplayer {

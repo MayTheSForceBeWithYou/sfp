@@ -1,17 +1,17 @@
-`@flxbl-io/sfp quickbuild`
+`@n8codes/sfp quickbuild`
 ==========================
 
 Build artifact(s) of your packages in the current project without dependency validation for unlocked packages
 
-* [`@flxbl-io/sfp quickbuild`](#flxbl-iosfp-quickbuild)
+* [`@n8codes/sfp quickbuild`](#flxbl-iosfp-quickbuild)
 
-## `@flxbl-io/sfp quickbuild`
+## `@n8codes/sfp quickbuild`
 
 Build artifact(s) of your packages in the current project without dependency validation for unlocked packages
 
 ```
 USAGE
-  $ @flxbl-io/sfp quickbuild -v <value> --branch <value> [--loglevel
+  $ @n8codes/sfp quickbuild -v <value> --branch <value> [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL] [--apiversion <value>] [--diffcheck] [-p
     <value>] [-r <value>] [-f <value>] [--artifactdir <value>] [--waittime <value>] [--buildnumber <value>]
     [--executorcount <value>] [--tag <value>] [--releaseconfig <value>]
@@ -42,7 +42,7 @@ DESCRIPTION
   Build artifact(s) of your packages in the current project without dependency validation for unlocked packages
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator quickbuild
+  $ @n8codes/sfp orchestrator quickbuild
 ```
 
 _See code: [src/commands/quickbuild.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/quickbuild.ts)_

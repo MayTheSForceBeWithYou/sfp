@@ -1,17 +1,17 @@
-`@flxbl-io/sfp metrics`
+`@n8codes/sfp metrics`
 =======================
 
 Report metrics to sfp supported metric providers
 
-* [`@flxbl-io/sfp metrics report`](#flxbl-iosfp-metrics-report)
+* [`@n8codes/sfp metrics report`](#flxbl-iosfp-metrics-report)
 
-## `@flxbl-io/sfp metrics report`
+## `@n8codes/sfp metrics report`
 
 Report a custom metric to any sfp supported metric provider
 
 ```
 USAGE
-  $ @flxbl-io/sfp metrics report -m <value> -t gauge|counter|timer [-v <value>] [-g <value>] [--loglevel
+  $ @n8codes/sfp metrics report -m <value> -t gauge|counter|timer [-v <value>] [-g <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS

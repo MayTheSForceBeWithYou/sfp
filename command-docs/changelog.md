@@ -1,17 +1,17 @@
-`@flxbl-io/sfp changelog`
+`@n8codes/sfp changelog`
 =========================
 
 Track your artifacts & user stories as they progress through different environments, with release changelogs
 
-* [`@flxbl-io/sfp changelog generate`](#flxbl-iosfp-changelog-generate)
+* [`@n8codes/sfp changelog generate`](#flxbl-iosfp-changelog-generate)
 
-## `@flxbl-io/sfp changelog generate`
+## `@n8codes/sfp changelog generate`
 
 Generates release changelog, providing a summary of artifact versions, work items and commits introduced in a release. Creates a release definition based on artifacts contained in the artifact directory, and compares it to previous release definition in changelog stored on a source repository
 
 ```
 USAGE
-  $ @flxbl-io/sfp changelog generate -d <value> -n <value> -w <value> [--limit <value>] [--workitemurl <value>]
+  $ @n8codes/sfp changelog generate -d <value> -n <value> -w <value> [--limit <value>] [--workitemurl <value>]
     [--directory <value>] (--nopush -b <value>) [--showallartifacts] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 

@@ -1,18 +1,18 @@
-`@flxbl-io/sfp impact`
+`@n8codes/sfp impact`
 ======================
 
 Utilities to help you understand the impact of various components in sfp
 
-* [`@flxbl-io/sfp impact package`](#flxbl-iosfp-impact-package)
-* [`@flxbl-io/sfp impact releaseconfig`](#flxbl-iosfp-impact-releaseconfig)
+* [`@n8codes/sfp impact package`](#flxbl-iosfp-impact-package)
+* [`@n8codes/sfp impact releaseconfig`](#flxbl-iosfp-impact-releaseconfig)
 
-## `@flxbl-io/sfp impact package`
+## `@n8codes/sfp impact package`
 
 Figures out impacted packages of a project, due to a change from the last known tags
 
 ```
 USAGE
-  $ @flxbl-io/sfp impact package --basebranch <value> [--loglevel
+  $ @n8codes/sfp impact package --basebranch <value> [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -26,13 +26,13 @@ DESCRIPTION
 
 _See code: [src/commands/impact/package.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/impact/package.ts)_
 
-## `@flxbl-io/sfp impact releaseconfig`
+## `@n8codes/sfp impact releaseconfig`
 
 Figures out impacted release configurations of a project, due to a change,from the last known tags
 
 ```
 USAGE
-  $ @flxbl-io/sfp impact releaseconfig --basebranch <value> [--loglevel
+  $ @n8codes/sfp impact releaseconfig --basebranch <value> [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL] [--branch <value>] [--releaseconfig <value>]
     [--explicitDependencyCheck] [--filterBy <value>] [--filterByChangesInBranch]
 

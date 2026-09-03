@@ -1,18 +1,18 @@
-`@flxbl-io/sfp validate`
+`@n8codes/sfp validate`
 ========================
 
 Validate a change in your project repository
 
-* [`@flxbl-io/sfp validate org`](#flxbl-iosfp-validate-org)
-* [`@flxbl-io/sfp validate pool`](#flxbl-iosfp-validate-pool)
+* [`@n8codes/sfp validate org`](#flxbl-iosfp-validate-org)
+* [`@n8codes/sfp validate pool`](#flxbl-iosfp-validate-pool)
 
-## `@flxbl-io/sfp validate org`
+## `@n8codes/sfp validate org`
 
 Validate a change in your project repository against a provided org
 
 ```
 USAGE
-  $ @flxbl-io/sfp validate org -o <value> --mode
+  $ @n8codes/sfp validate org -o <value> --mode
     individual|fastfeedback|thorough|ff-release-config|thorough-release-config [--releaseconfig <value>]
     [--coveragepercent <value>] [--diffcheck] [--disableartifactupdate] [-g <value>] [--basebranch <value>] [--orginfo]
     [--installdeps] (--disablesourcepkgoverride -v <value>) [--disableparalleltesting] [--loglevel
@@ -45,8 +45,8 @@ DESCRIPTION
   Validate a change in your project repository against a provided org
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator validateagainstorg
-  $ @flxbl-io/sfp validateAgainstOrg
+  $ @n8codes/sfp orchestrator validateagainstorg
+  $ @n8codes/sfp validateAgainstOrg
 
 EXAMPLES
   $ sfp validate org  -o <targetorg>
@@ -54,13 +54,13 @@ EXAMPLES
 
 _See code: [src/commands/validate/org.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/validate/org.ts)_
 
-## `@flxbl-io/sfp validate pool`
+## `@n8codes/sfp validate pool`
 
 Validate a change in your project repository against a scratch org prepared by the prepare command
 
 ```
 USAGE
-  $ @flxbl-io/sfp validate pool -p <value> -v <value> --mode
+  $ @n8codes/sfp validate pool -p <value> -v <value> --mode
     individual|fastfeedback|thorough|ff-release-config|thorough-release-config [--installdeps] [--releaseconfig <value>]
     [--coveragepercent <value>] [--disablesourcepkgoverride] [-x] [--orginfo] [--keys <value>] [--basebranch <value>]
     [--tag <value>] [--disableparalleltesting] [--disablediffcheck] [--disableartifactupdate] [-g <value>] [--loglevel
@@ -101,8 +101,8 @@ DESCRIPTION
   Validate a change in your project repository against a scratch org prepared by the prepare command
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator validate
-  $ @flxbl-io/sfp validate
+  $ @n8codes/sfp orchestrator validate
+  $ @n8codes/sfp validate
 
 EXAMPLES
   $ sfp validate -p "POOL_TAG_1,POOL_TAG_2" -v <devHubUsername>

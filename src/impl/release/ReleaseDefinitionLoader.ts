@@ -4,7 +4,7 @@ const yaml = require('js-yaml');
 import lodash = require('lodash');
 import get18DigitSalesforceId from '../../utils/Get18DigitSalesforceId';
 import Git from '../../core/git/Git';
-import { ConsoleLogger } from '@flxbl-io/sfp-logger';
+import { ConsoleLogger } from '@n8codes/sfp-logger';
 const fs = require('fs-extra');
 const path = require('path');
 

@@ -1,6 +1,6 @@
 import ProjectConfig from '../../project/ProjectConfig';
-import { COLOR_HEADER, COLOR_KEY_MESSAGE, COLOR_SUCCESS, COLOR_ERROR } from '@flxbl-io/sfp-logger';
-import SFPLogger, { LoggerLevel, Logger } from '@flxbl-io/sfp-logger';
+import { COLOR_HEADER, COLOR_KEY_MESSAGE, COLOR_SUCCESS, COLOR_ERROR } from '@n8codes/sfp-logger';
+import SFPLogger, { LoggerLevel, Logger } from '@n8codes/sfp-logger';
 import _ from 'lodash';
 import UserDefinedExternalDependencyMap from '../../project/UserDefinedExternalDependency';
 import semver from 'semver';

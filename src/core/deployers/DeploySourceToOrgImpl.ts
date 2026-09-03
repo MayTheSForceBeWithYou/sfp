@@ -5,7 +5,7 @@ import SFPLogger, {
     COLOR_SUCCESS,
     Logger,
     LoggerLevel,
-} from '@flxbl-io/sfp-logger';
+} from '@n8codes/sfp-logger';
 
 import { Duration } from '@salesforce/kit';
 import DeploymentExecutor, { DeploySourceResult } from './DeploymentExecutor';

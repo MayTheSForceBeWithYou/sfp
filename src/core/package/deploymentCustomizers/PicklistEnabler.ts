@@ -1,4 +1,4 @@
-import SFPLogger, { Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import { ComponentSet, registry } from '@salesforce/source-deploy-retrieve';
 import SfpPackage, { PackageType } from '../SfpPackage';
 import { Connection } from '@salesforce/core';

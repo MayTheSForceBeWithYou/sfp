@@ -1,25 +1,25 @@
 {
-    "name": "@flxbl-io/sfp",
+    "name": "@n8codes/sfp",
     "description": "sfp is a CLI tool to help you manage your Salesforce projects in an artifact centric model",
     "version": "39.8.0",
     "license": "MIT",
-    "author": "flxblio",
+    "author": "n8codes",
     "release": "August 25",
     "bin": {
         "sfp": "./bin/run",
         "sfpowerscripts": "./bin/run"
     },
-    "bugs": "https://github.com/flxbl-io/sfp/issues",
+    "bugs": "https://github.com/MayTheSForceBeWithYou/sfp/issues",
     "publishConfig": {
         "access": "public"
     },
     "dependencies": {
         "@apexdevtools/apex-parser": "^4.0.0",
-        "@flxbl-io/apexlink": "4.0.1",
-        "@flxbl-io/sfdx-process-wrapper": "3.0.0",
-        "@flxbl-io/sfp-logger": "5.0.1",
-        "@flxbl-io/sfprofiles": "5.2.2",
         "@jsforce/jsforce-node": "^3.2.0",
+        "@n8codes/apexlink": "5.0.0",
+        "@n8codes/sfdx-process-wrapper": "4.0.0",
+        "@n8codes/sfp-logger": "5.0.1",
+        "@n8codes/sfprofiles": "5.2.2",
         "@newrelic/telemetry-sdk": "^0.6.0",
         "@oclif/core": "^4.5.2",
         "@oclif/plugin-commands": "4.1.32",
@@ -109,9 +109,9 @@
         "/resources",
         "/oclif.manifest.json"
     ],
-    "homepage": "https://github.com/flxbl-io/sfp",
+    "homepage": "https://github.com/MayTheSForceBeWithYou/sfp",
     "keywords": [
-        "flxblio",
+        "n8codes",
         "sfp-cli",
         "sfdx",
         "sfdx-plugin",
@@ -182,14 +182,16 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/flxbl-io/sfp.git",
-        "directory": "packages/sfp-cli"
+        "url": "https://github.com/MayTheSForceBeWithYou/sfp.git"
+    },
+    "overrides": {
+        "@flxbl-io/sfp-logger": "npm:@n8codes/sfp-logger@5.0.1"
     },
     "scripts": {
         "prepare": "husky",
         "watch": "npm run compile -- --watch",
         "build": "npm run clean && npm run compile",
-        "docs": "oclif readme --no-aliases --multi --dir=docs --repository-prefix https://github.com/flxbl-io/sfp",
+        "docs": "oclif readme --no-aliases --multi --dir=docs --repository-prefix https://github.com/MayTheSForceBeWithYou/sfp",
         "manifest": "oclif manifest",
         "clean": "rimraf ./lib && rimraf tsconfig.tsbuildinfo",
         "compile": "tsc -b tsconfig.json",

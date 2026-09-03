@@ -1,5 +1,5 @@
 import path from 'path';
-import { Logger } from '@flxbl-io/sfp-logger';
+import { Logger } from '@n8codes/sfp-logger';
 import SFPOrg from '../org/SFPOrg';
 import InstallDataPackageImpl from './packageInstallers/InstallDataPackageImpl';
 import { SfpPackageInstallationOptions } from './packageInstallers/InstallPackage';

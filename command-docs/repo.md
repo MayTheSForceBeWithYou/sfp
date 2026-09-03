@@ -1,17 +1,17 @@
-`@flxbl-io/sfp repo`
+`@n8codes/sfp repo`
 ====================
 
 Manage your project repository
 
-* [`@flxbl-io/sfp repo patch`](#flxbl-iosfp-repo-patch)
+* [`@n8codes/sfp repo patch`](#flxbl-iosfp-repo-patch)
 
-## `@flxbl-io/sfp repo patch`
+## `@n8codes/sfp repo patch`
 
 Generate a dynamic branch with the packages patched to the contents as mentioned in the release config file
 
 ```
 USAGE
-  $ @flxbl-io/sfp repo patch -p <value> -s <value> -t <value> [--scope <value> [--npm | -f <value>]]
+  $ @n8codes/sfp repo patch -p <value> -s <value> -t <value> [--scope <value> [--npm | -f <value>]]
     [--npmrcpath <value> ] [-g <value>] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS

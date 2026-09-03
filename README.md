@@ -41,7 +41,7 @@ Thanks once again for your understanding and all your contributions.
 
 
 ```
-![Version](https://img.shields.io/npm/v/@flxbl-io/sfp.svg)
+![Version](https://img.shields.io/npm/v/@n8codes/sfp.svg)
 [![GitHub stars](https://img.shields.io/github/stars/flxbl-io/sfp)](https://gitHub.com/flxbl-io/sfp/stargazers/)
 [![GitHub contributors](https://img.shields.io/github/contributors/flxbl-io/sfp.svg)](https://github.com/flxbl-io/sfp/graphs/contributors/)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/flxbl-io/sfp/blob/main/LICENSE)
@@ -73,7 +73,7 @@ sfp is constantly evolving and being driven by the passionate community that has
 sfp can be installed on your local device using npm
 
 ```
-npm i -g @flxbl-io/sfp
+npm i -g @n8codes/sfp
 ```
 
 

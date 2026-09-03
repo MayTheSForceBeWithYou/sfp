@@ -7,7 +7,7 @@ import SFPLogger, {
     COLOR_HEADER,
     COLOR_KEY_MESSAGE,
     COLOR_ERROR,
-} from '@flxbl-io/sfp-logger';
+} from '@n8codes/sfp-logger';
 import { Flags } from '@oclif/core';
 import { loglevel } from '../../flags/sfdxflags';
 import { deactivate, deleteFlows, getFlowDefinition, getFlowsByDefinition } from '../../core/flows/FlowOperations';
@@ -19,7 +19,7 @@ Messages.importMessagesDirectory(__dirname);
 
 // Load the specific messages for this file. Messages from @salesforce/command, @salesforce/core,
 // or any library that is using the messages framework can also be loaded this way.
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'flow');
+const messages = Messages.loadMessages('@n8codes/sfp', 'flow');
 
 export default class Cleanup extends sfpCommand {
     public static description = messages.getMessage('cleanupDescription');

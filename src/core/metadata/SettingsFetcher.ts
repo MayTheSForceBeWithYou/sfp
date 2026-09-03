@@ -1,4 +1,4 @@
-import SFPLogger, { Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import SFPOrg from '../org/SFPOrg';
 const fs = require('fs-extra');
 import { XMLParser } from 'fast-xml-parser';

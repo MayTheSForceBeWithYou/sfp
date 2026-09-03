@@ -7,7 +7,7 @@
 
 
 
-import SFPLogger, { LoggerLevel, COLOR_KEY_MESSAGE,COLOR_HEADER } from '@flxbl-io/sfp-logger';
+import SFPLogger, { LoggerLevel, COLOR_KEY_MESSAGE,COLOR_HEADER } from '@n8codes/sfp-logger';
 import { Messages, AuthInfo } from '@salesforce/core';
 import { Flags } from '@oclif/core';
 import SfpCommand from '../../../SfpCommand';
@@ -18,7 +18,7 @@ import * as fs from 'fs-extra';
 Messages.importMessagesDirectory(__dirname);
 
 
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'org_login_url');
+const messages = Messages.loadMessages('@n8codes/sfp', 'org_login_url');
 const AUTH_URL_FORMAT = 'force://<clientId>:<clientSecret>:<refreshToken>@<instanceUrl>';
 
 export default class OrgLoginUrl extends SfpCommand {

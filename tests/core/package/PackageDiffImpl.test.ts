@@ -1,6 +1,6 @@
 import { jest, expect } from '@jest/globals';
 const fs = require('fs');
-import { ConsoleLogger } from '@flxbl-io/sfp-logger';
+import { ConsoleLogger } from '@n8codes/sfp-logger';
 import PackageDiffImpl, { PackageDiffOptions } from '../../../src/core/package/diff/PackageDiffImpl';
 import ProjectConfig from '../../../src/core/project/ProjectConfig';
 

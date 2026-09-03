@@ -13,7 +13,7 @@ import SFPLogger, {
     COLOR_WARNING,
     COLOR_KEY_MESSAGE,
     ConsoleLogger,
-} from '@flxbl-io/sfp-logger';
+} from '@n8codes/sfp-logger';
 import ReleaseDefinition from '../impl/release/ReleaseDefinition';
 import {
     arrayFlagSfdxStyle,
@@ -25,7 +25,7 @@ import {
 import { Flags } from '@oclif/core';
 
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'release');
+const messages = Messages.loadMessages('@n8codes/sfp', 'release');
 
 export default class Release extends SfpCommand {
     public static description = messages.getMessage('commandDescription');

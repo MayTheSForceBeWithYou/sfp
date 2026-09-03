@@ -1,19 +1,19 @@
-`@flxbl-io/sfp artifacts`
+`@n8codes/sfp artifacts`
 =========================
 
 Manage artifacts for a project
 
-* [`@flxbl-io/sfp artifacts fetch`](#flxbl-iosfp-artifacts-fetch)
-* [`@flxbl-io/sfp artifacts promote`](#flxbl-iosfp-artifacts-promote)
-* [`@flxbl-io/sfp artifacts query`](#flxbl-iosfp-artifacts-query)
+* [`@n8codes/sfp artifacts fetch`](#flxbl-iosfp-artifacts-fetch)
+* [`@n8codes/sfp artifacts promote`](#flxbl-iosfp-artifacts-promote)
+* [`@n8codes/sfp artifacts query`](#flxbl-iosfp-artifacts-query)
 
-## `@flxbl-io/sfp artifacts fetch`
+## `@n8codes/sfp artifacts fetch`
 
 Fetch sfp artifacts from a NPM compatible registry using a release definition file
 
 ```
 USAGE
-  $ @flxbl-io/sfp artifacts fetch -d <value> [-p <value>] [--scope <value> [--npm | -f <value>]] [--npmrcpath <value>
+  $ @n8codes/sfp artifacts fetch -d <value> [-p <value>] [--scope <value> [--npm | -f <value>]] [--npmrcpath <value>
     ] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -39,13 +39,13 @@ EXAMPLES
 
 _See code: [src/commands/artifacts/fetch.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/artifacts/fetch.ts)_
 
-## `@flxbl-io/sfp artifacts promote`
+## `@n8codes/sfp artifacts promote`
 
 Promotes artifacts predominantly for unlocked packages with code coverage greater than 75%
 
 ```
 USAGE
-  $ @flxbl-io/sfp artifacts promote -v <value> -d <value> [--loglevel
+  $ @n8codes/sfp artifacts promote -v <value> -d <value> [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -58,7 +58,7 @@ DESCRIPTION
   Promotes artifacts predominantly for unlocked packages with code coverage greater than 75%
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator promote
+  $ @n8codes/sfp orchestrator promote
 
 EXAMPLES
   $ sfp promote -d path/to/artifacts -v <org>
@@ -66,13 +66,13 @@ EXAMPLES
 
 _See code: [src/commands/artifacts/promote.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/artifacts/promote.ts)_
 
-## `@flxbl-io/sfp artifacts query`
+## `@n8codes/sfp artifacts query`
 
 Fetch details about artifacts installed in a target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp artifacts query -o <value> [--json] [--loglevel
+  $ @n8codes/sfp artifacts query -o <value> [--json] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS

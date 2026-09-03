@@ -1,17 +1,17 @@
-`@flxbl-io/sfp build`
+`@n8codes/sfp build`
 =====================
 
 Build artifact(s) of your packages in the current project
 
-* [`@flxbl-io/sfp build`](#flxbl-iosfp-build)
+* [`@n8codes/sfp build`](#flxbl-iosfp-build)
 
-## `@flxbl-io/sfp build`
+## `@n8codes/sfp build`
 
 Build artifact(s) of your packages in the current project
 
 ```
 USAGE
-  $ @flxbl-io/sfp build -v <value> --branch <value> [--loglevel
+  $ @n8codes/sfp build -v <value> --branch <value> [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL] [--apiversion <value>] [--diffcheck] [-p
     <value>] [-r <value>] [-f <value>] [--artifactdir <value>] [--waittime <value>] [--number <value>] [--executorcount
     <value>] [--tag <value>] [--releaseconfig <value>]
@@ -42,7 +42,7 @@ DESCRIPTION
   Build artifact(s) of your packages in the current project
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator build
+  $ @n8codes/sfp orchestrator build
 ```
 
 _See code: [src/commands/build.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/build.ts)_

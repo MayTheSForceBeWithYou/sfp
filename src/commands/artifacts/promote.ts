@@ -2,19 +2,19 @@ import SfpCommand from '../../SfpCommand';
 import { Messages } from '@salesforce/core';
 import PromoteUnlockedPackageImpl from '../../core/package/promote/PromoteUnlockedPackageImpl'
 import ArtifactFetcher from '../../core/artifacts/ArtifactFetcher';
-import { ConsoleLogger } from '@flxbl-io/sfp-logger';
+import { ConsoleLogger } from '@n8codes/sfp-logger';
 import SfpPackageBuilder from '../../core/package/SfpPackageBuilder';
 import { PackageType } from '../../core/package/SfpPackage';
 import { Flags, ux } from '@oclif/core';
 import Table = require('cli-table');
 import { TableInstance } from '../../types/cli-table';
 import { loglevel, targetdevhubusername } from '../../flags/sfdxflags';
-import { LoggerLevel } from '@flxbl-io/sfp-logger';
-import { COLOR_HEADER } from '@flxbl-io/sfp-logger';
-import SFPLogger from '@flxbl-io/sfp-logger';
+import { LoggerLevel } from '@n8codes/sfp-logger';
+import { COLOR_HEADER } from '@n8codes/sfp-logger';
+import SFPLogger from '@n8codes/sfp-logger';
 
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'promote');
+const messages = Messages.loadMessages('@n8codes/sfp', 'promote');
 
 export default class Promote extends SfpCommand {
     public static description = messages.getMessage('commandDescription');

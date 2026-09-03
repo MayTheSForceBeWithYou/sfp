@@ -3,14 +3,14 @@ import { Messages } from '@salesforce/core';
 import ArtifactFetcher, { Artifact } from './core/artifacts/ArtifactFetcher';
 import * as rimraf from 'rimraf';
 import SfpPackage from './core/package/SfpPackage';
-import { ConsoleLogger } from '@flxbl-io/sfp-logger';
+import { ConsoleLogger } from '@n8codes/sfp-logger';
 import SfpPackageBuilder from './core/package/SfpPackageBuilder';
 import SFPOrg from './core/org/SFPOrg';
 import { Flags } from '@oclif/core';
 import { requiredUserNameFlag } from './flags/sfdxflags';
 
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'install_package_command');
+const messages = Messages.loadMessages('@n8codes/sfp', 'install_package_command');
 
 /**
  * Base class providing common functionality for package installation

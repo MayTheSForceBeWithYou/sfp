@@ -2,7 +2,7 @@ import * as fs from 'fs-extra';
 import SfpPackage from '../SfpPackage';
 import PropertyFetcher from './PropertyFetcher';
 import xml2json from '../../utils/xml2json';
-import { Logger } from '@flxbl-io/sfp-logger';
+import { Logger } from '@n8codes/sfp-logger';
 
 export default class DestructiveManifestPathFetcher implements PropertyFetcher {
     public async getsfpProperties(packageContents: SfpPackage, packageLogger?: Logger) {

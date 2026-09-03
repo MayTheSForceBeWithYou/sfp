@@ -2,16 +2,16 @@ import { Messages } from '@salesforce/core';
 import SfpCommand from '../../SfpCommand';
 import ValidateImpl, { ValidateAgainst, ValidateProps, ValidationMode } from '../../impl/validate/ValidateImpl';
 import SFPStatsSender from '../../core/stats/SFPStatsSender';
-import SFPLogger, { COLOR_HEADER, COLOR_KEY_MESSAGE } from '@flxbl-io/sfp-logger';
+import SFPLogger, { COLOR_HEADER, COLOR_KEY_MESSAGE } from '@n8codes/sfp-logger';
 import ValidateError from '../../errors/ValidateError';
 import ValidateResult from '../../impl/validate/ValidateResult';
 import * as fs from 'fs-extra';
 import { arrayFlagSfdxStyle, loglevel, logsgroupsymbol, targetdevhubusername } from '../../flags/sfdxflags';
 import { Flags } from '@oclif/core';
-import { LoggerLevel } from '@flxbl-io/sfp-logger';
+import { LoggerLevel } from '@n8codes/sfp-logger';
 
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'validate');
+const messages = Messages.loadMessages('@n8codes/sfp', 'validate');
 
 export default class ValidateAgainstPool extends SfpCommand {
     static aliases = ['orchestrator:validate', 'validate']

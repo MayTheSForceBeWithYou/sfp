@@ -1,4 +1,4 @@
-import SFPLogger, { LoggerLevel, Logger } from '@flxbl-io/sfp-logger';
+import SFPLogger, { LoggerLevel, Logger } from '@n8codes/sfp-logger';
 import { ApexSortedByType } from '../../apex/parser/ApexTypeFetcher';
 import SFPStatsSender from '../../stats/SFPStatsSender';
 import PackageEmptyChecker from '../validators/PackageEmptyChecker';

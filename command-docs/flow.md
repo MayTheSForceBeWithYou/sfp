@@ -1,19 +1,19 @@
-`@flxbl-io/sfp flow`
+`@n8codes/sfp flow`
 ====================
 
 Manage flows in your org
 
-* [`@flxbl-io/sfp flow activate`](#flxbl-iosfp-flow-activate)
-* [`@flxbl-io/sfp flow cleanup`](#flxbl-iosfp-flow-cleanup)
-* [`@flxbl-io/sfp flow deactivate`](#flxbl-iosfp-flow-deactivate)
+* [`@n8codes/sfp flow activate`](#flxbl-iosfp-flow-activate)
+* [`@n8codes/sfp flow cleanup`](#flxbl-iosfp-flow-cleanup)
+* [`@n8codes/sfp flow deactivate`](#flxbl-iosfp-flow-deactivate)
 
-## `@flxbl-io/sfp flow activate`
+## `@n8codes/sfp flow activate`
 
 Activate the flow on a target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp flow activate -o <value> [-f <value>] [-p <value>] [--loglevel
+  $ @n8codes/sfp flow activate -o <value> [-f <value>] [-p <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -29,13 +29,13 @@ DESCRIPTION
 
 _See code: [src/commands/flow/activate.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/flow/activate.ts)_
 
-## `@flxbl-io/sfp flow cleanup`
+## `@n8codes/sfp flow cleanup`
 
 Cleanup inactive flows on a target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp flow cleanup -o <value> [-f <value>] [-p <value>] [--loglevel
+  $ @n8codes/sfp flow cleanup -o <value> [-f <value>] [-p <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -51,13 +51,13 @@ DESCRIPTION
 
 _See code: [src/commands/flow/cleanup.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/flow/cleanup.ts)_
 
-## `@flxbl-io/sfp flow deactivate`
+## `@n8codes/sfp flow deactivate`
 
 Deactivate the flow on a target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp flow deactivate -o <value> [-f <value>] [-p <value>] [--loglevel
+  $ @n8codes/sfp flow deactivate -o <value> [-f <value>] [-p <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS

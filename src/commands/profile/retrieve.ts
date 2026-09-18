@@ -1,18 +1,18 @@
 import { Messages, Org }  from '@salesforce/core';
 import * as fs from 'fs-extra';
 import { isNil } from 'lodash';
-import { Sfpowerkit } from '@flxbl-io/sfprofiles/lib/utils/sfpowerkit';
-import ProfileSync from '@flxbl-io/sfprofiles/lib/impl/source/profileSync';
+import { Sfpowerkit } from '@n8codes/sfprofiles/lib/utils/sfpowerkit';
+import ProfileSync from '@n8codes/sfprofiles/lib/impl/source/profileSync';
 import SfpCommand from '../../SfpCommand';
 import Table from 'cli-table';
 import { ZERO_BORDER_TABLE } from '../../ui/TableConstants';
 import { arrayFlagSfdxStyle, loglevel, orgApiVersionFlagSfdxStyle, requiredUserNameFlag } from '../../flags/sfdxflags';
 import { Flags } from '@oclif/core';
-import SFPLogger, { COLOR_KEY_MESSAGE, COLOR_WARNING, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { COLOR_KEY_MESSAGE, COLOR_WARNING, LoggerLevel } from '@n8codes/sfp-logger';
 
 
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'profile_retrieve');
+const messages = Messages.loadMessages('@n8codes/sfp', 'profile_retrieve');
 
 export default class Retrieve extends SfpCommand {
     public static description = messages.getMessage('commandDescription');

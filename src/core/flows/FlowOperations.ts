@@ -1,6 +1,6 @@
 import { Query, SaveResult } from '@jsforce/jsforce-node';
 import SFPOrg from '../org/SFPOrg';
-import SFPLogger, { Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import QueryHelper from '../queryHelper/QueryHelper';
 const retry = require('async-retry');
 

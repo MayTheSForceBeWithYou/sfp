@@ -1,4 +1,4 @@
-import SFPLogger, { LoggerLevel, Logger } from '@flxbl-io/sfp-logger';
+import SFPLogger, { LoggerLevel, Logger } from '@n8codes/sfp-logger';
 import { ApexSortedByType } from '../../apex/parser/ApexTypeFetcher';
 import SFPStatsSender from '../../stats/SFPStatsSender';
 import PackageEmptyChecker from '../validators/PackageEmptyChecker';
@@ -43,27 +43,45 @@ export default class CreateDiffPackageImp extends CreateSourcePackageImpl {
 
         //Fetch Baseline commit from DevHub or the provided org for validation
         let commitsOfPackagesInstalled = {};
-         commitsOfPackagesInstalled = await this.getCommitsOfPackagesInstalledInOrg(devhubOrg);
-        
+        commitsOfPackagesInstalled = await this.getCommitsOfPackagesInstalledInOrg(devhubOrg);
+
+        let commitSHAFromSource: string;
+        let commitSHAToSource: string;
 
         if (this.packageCreationParams.revisionFrom) {
             this.sfpPackage.commitSHAFrom = this.packageCreationParams.revisionFrom;
+            commitSHAFromSource = 'revisionFrom flag';
         } else if (commitsOfPackagesInstalled[this.sfpPackage.packageName]) {
             this.sfpPackage.commitSHAFrom = commitsOfPackagesInstalled[this.sfpPackage.packageName];
+            commitSHAFromSource = 'org-installed commit';
         } else {
             this.sfpPackage.commitSHAFrom = this.sfpPackage.sourceVersion;
+            commitSHAFromSource = 'sourceVersion fallback';
         }
 
         if (this.packageCreationParams.revisionTo) {
             this.sfpPackage.commitSHATo = this.packageCreationParams.revisionTo;
+            commitSHAToSource = 'revisionTo flag';
         } else {
             this.sfpPackage.commitSHATo = this.sfpPackage.sourceVersion;
+            commitSHAToSource = 'sourceVersion fallback';
         }
+
+        SFPLogger.log(
+            `Package ${sfpPackage.packageName} diff baseline resolved commitSHAFrom=${this.sfpPackage.commitSHAFrom} (${commitSHAFromSource}), commitSHATo=${this.sfpPackage.commitSHATo} (${commitSHAToSource})`,
+            LoggerLevel.DEBUG,
+            this.logger
+        );
     }
 
     private async getCommitsOfPackagesInstalledInOrg(diffTargetSfpOrg: SFPOrg) {
-        let installedArtifacts = await diffTargetSfpOrg.getInstalledArtifacts();
+        let installedArtifacts = await diffTargetSfpOrg.getInstalledArtifacts(`CreatedDate`, this.logger);
         let packagesInstalledInOrgMappedToCommits = await this.mapInstalledArtifactstoPkgAndCommits(installedArtifacts);
+        SFPLogger.log(
+            `Resolved ${Object.keys(packagesInstalledInOrgMappedToCommits).length} installed package commit baseline(s) from org ${diffTargetSfpOrg.getUsername()} for package ${this.sfpPackage.packageName}`,
+            LoggerLevel.DEBUG,
+            this.logger
+        );
         return packagesInstalledInOrgMappedToCommits;
     }
 

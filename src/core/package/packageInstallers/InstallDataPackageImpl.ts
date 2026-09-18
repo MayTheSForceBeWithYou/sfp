@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
-import SFPLogger, { Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import SFDMURunImpl from '../../sfdmuwrapper/SFDMURunImpl';
 import VlocityPackDeployImpl from '../../vlocitywrapper/VlocityPackDeployImpl';
-import { SFDXCommand } from '@flxbl-io/sfdx-process-wrapper/lib/SFDXCommand';
+import { SFDXCommand } from '@n8codes/sfdx-process-wrapper/lib/SFDXCommand';
 const path = require('path');
 import OrgDetailsFetcher from '../../org/OrgDetailsFetcher';
 import { InstallPackage, SfpPackageInstallationOptions } from './InstallPackage';

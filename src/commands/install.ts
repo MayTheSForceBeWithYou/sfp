@@ -8,19 +8,19 @@ import SFPLogger, {
     COLOR_HEADER,
     COLOR_KEY_MESSAGE,
     COLOR_SUCCESS,
-} from '@flxbl-io/sfp-logger';
-import { COLOR_TIME } from '@flxbl-io/sfp-logger';
+} from '@n8codes/sfp-logger';
+import { COLOR_TIME } from '@n8codes/sfp-logger';
 import getFormattedTime from '../core/utils/GetFormattedTime';
 import { Flags } from '@oclif/core';
 import { arrayFlagSfdxStyle, loglevel, logsgroupsymbol, requiredUserNameFlag } from '../flags/sfdxflags';
-import { LoggerLevel } from '@flxbl-io/sfp-logger';
+import { LoggerLevel } from '@n8codes/sfp-logger';
 
 // Initialize Messages with the current plugin directory
 Messages.importMessagesDirectory(__dirname);
 
 // Load the specific messages for this file. Messages from @salesforce/command, @salesforce/core,
 // or any library that is using the messages framework can also be loaded this way.
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'install');
+const messages = Messages.loadMessages('@n8codes/sfp', 'install');
 
 export default class Install extends SfpCommand {
     public static description = messages.getMessage('commandDescription');

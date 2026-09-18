@@ -1,4 +1,4 @@
-import SFPLogger, { COLOR_WARNING, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { COLOR_WARNING, LoggerLevel } from '@n8codes/sfp-logger';
 const fs = require('fs-extra');
 import child_process = require('child_process');
 import FetchAnArtifact from './FetchAnArtifact';

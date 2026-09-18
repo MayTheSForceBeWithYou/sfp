@@ -1,17 +1,17 @@
-`@flxbl-io/sfp publish`
+`@n8codes/sfp publish`
 =======================
 
 Publish packages to a NPM Compatible artifact registry
 
-* [`@flxbl-io/sfp publish`](#flxbl-iosfp-publish)
+* [`@n8codes/sfp publish`](#flxbl-iosfp-publish)
 
-## `@flxbl-io/sfp publish`
+## `@n8codes/sfp publish`
 
 Publish packages to a NPM Compatible artifact registry
 
 ```
 USAGE
-  $ @flxbl-io/sfp publish -d <value> [-p -v <value>] [-t <value>] [--gittag] [--gittaglimit <value>]
+  $ @n8codes/sfp publish -d <value> [-p -v <value>] [-t <value>] [--gittag] [--gittaglimit <value>]
     [--gittagage <value>] [--pushgittag] [--scope <value> [--npm | -f <value>]] [--npmtag <value> ] [--npmrcpath <value>
     ] [-g <value>] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -43,7 +43,7 @@ DESCRIPTION
   Publish packages to a NPM Compatible artifact registry
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator publish
+  $ @n8codes/sfp orchestrator publish
 
 EXAMPLES
   $ sfp publish --npm

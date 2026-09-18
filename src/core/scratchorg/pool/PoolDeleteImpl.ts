@@ -1,11 +1,11 @@
-import SFPLogger from '@flxbl-io/sfp-logger';
+import SFPLogger from '@n8codes/sfp-logger';
 import { Org } from '@salesforce/core';
 import { PoolBaseImpl } from './PoolBaseImpl';
 import ScratchOrg from '../ScratchOrg';
 import ScratchOrgInfoFetcher from './services/fetchers/ScratchOrgInfoFetcher';
 import ScratchOrgOperator from '../ScratchOrgOperator';
-import { Logger } from '@flxbl-io/sfp-logger';
-import { LoggerLevel } from '@flxbl-io/sfp-logger';
+import { Logger } from '@n8codes/sfp-logger';
+import { LoggerLevel } from '@n8codes/sfp-logger';
 
 export default class PoolDeleteImpl extends PoolBaseImpl {
     private tag: string;

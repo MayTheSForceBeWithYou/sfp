@@ -1,17 +1,17 @@
-`@flxbl-io/sfp install`
+`@n8codes/sfp install`
 =======================
 
 Installs artifact(s) from a given directory to a target org
 
-* [`@flxbl-io/sfp install`](#flxbl-iosfp-install)
+* [`@n8codes/sfp install`](#flxbl-iosfp-install)
 
-## `@flxbl-io/sfp install`
+## `@n8codes/sfp install`
 
 Installs artifact(s) from a given directory to a target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp install -o <value> [--artifactdir <value>] [--waittime <value>] [-t <value>] [-b <value>
+  $ @n8codes/sfp install -o <value> [--artifactdir <value>] [--waittime <value>] [-t <value>] [-b <value>
     --skipifalreadyed] [-p <value>] [--releaseconfig <value>] [--enablesourcetracking] [-g <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -36,8 +36,8 @@ DESCRIPTION
   Installs artifact(s) from a given directory to a target org
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator deploy
-  $ @flxbl-io/sfp deploy
+  $ @n8codes/sfp orchestrator deploy
+  $ @n8codes/sfp deploy
 
 EXAMPLES
   $ sfp install -o <username>

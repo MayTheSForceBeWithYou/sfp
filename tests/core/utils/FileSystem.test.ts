@@ -19,17 +19,24 @@ describe('Given a search directory', () => {
     });
 });
 
-const expectedFiles = ['b/b1.file', 'b/c/c1.file', 'b/c/c2.file', 'b/d/d1.file', 'b/d/x/x1.file', 'b/e/e1.file'];
+const expectedFiles = [
+    path.join('b', 'b1.file'),
+    path.join('b', 'c', 'c1.file'),
+    path.join('b', 'c', 'c2.file'),
+    path.join('b', 'd', 'd1.file'),
+    path.join('b', 'd', 'x', 'x1.file'),
+    path.join('b', 'e', 'e1.file'),
+];
 const expectedFilesIncludingDirs = [
     'b',
-    'b/b1.file',
-    'b/c',
-    'b/c/c1.file',
-    'b/c/c2.file',
-    'b/d',
-    'b/d/d1.file',
-    'b/d/x',
-    'b/d/x/x1.file',
-    'b/e',
-    'b/e/e1.file',
+    path.join('b', 'b1.file'),
+    path.join('b', 'c'),
+    path.join('b', 'c', 'c1.file'),
+    path.join('b', 'c', 'c2.file'),
+    path.join('b', 'd'),
+    path.join('b', 'd', 'd1.file'),
+    path.join('b', 'd', 'x'),
+    path.join('b', 'd', 'x', 'x1.file'),
+    path.join('b', 'e'),
+    path.join('b', 'e', 'e1.file'),
 ];

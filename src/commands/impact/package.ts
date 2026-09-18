@@ -1,18 +1,18 @@
 import { Messages } from '@salesforce/core';
 import SfpCommand from '../../SfpCommand';
 import { Stage } from '../../impl/Stage';
-import SFPLogger, { COLOR_KEY_MESSAGE, ConsoleLogger } from '@flxbl-io/sfp-logger';
+import SFPLogger, { COLOR_KEY_MESSAGE, ConsoleLogger } from '@n8codes/sfp-logger';
 import { Flags } from '@oclif/core';
 import { loglevel } from '../../flags/sfdxflags';
 import ImpactedPackageResolver, { ImpactedPackageProps } from '../../impl/impact/ImpactedPackagesResolver';
 import path from 'path';
 import * as fs from 'fs-extra';
 import ImpactedPackagesDisplayer from '../../core/display/ImpactedPackagesDisplayer';
-import { LoggerLevel } from '@flxbl-io/sfp-logger';
+import { LoggerLevel } from '@n8codes/sfp-logger';
 
 
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('@flxbl-io/sfp', 'impact_package');
+const messages = Messages.loadMessages('@n8codes/sfp', 'impact_package');
 
 export default class Package extends SfpCommand {
     public static flags = {

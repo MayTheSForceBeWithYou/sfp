@@ -1,4 +1,4 @@
-import { Logger } from '@flxbl-io/sfp-logger';
+import { Logger } from '@n8codes/sfp-logger';
 import fs from 'fs-extra';
 import path from 'path';
 import Git from '../../../src/core/git/Git';

@@ -1,17 +1,17 @@
-`@flxbl-io/sfp release`
+`@n8codes/sfp release`
 =======================
 
 Release a set of artifact(s) as defined by a release definition into a target org
 
-* [`@flxbl-io/sfp release`](#flxbl-iosfp-release)
+* [`@n8codes/sfp release`](#flxbl-iosfp-release)
 
-## `@flxbl-io/sfp release`
+## `@n8codes/sfp release`
 
 Release a set of artifact(s) as defined by a release definition into a target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp release -p <value> -o <value> [--scope <value> [--npm | -f <value>]] [--npmrcpath <value> ]
+  $ @n8codes/sfp release -p <value> -o <value> [--scope <value> [--npm | -f <value>]] [--npmrcpath <value> ]
     [-g <value>] [-t <value>] [--waittime <value>] [--keys <value>] [-d <value>] [-b <value> --generatechangelog] [-v
     <value>] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -44,7 +44,7 @@ DESCRIPTION
   Release a set of artifact(s) as defined by a release definition into a target org
 
 ALIASES
-  $ @flxbl-io/sfp orchestrator release
+  $ @n8codes/sfp orchestrator release
 
 EXAMPLES
   sfp release -p path/to/releasedefinition.yml -u myorg --npm --scope myscope --generatechangelog

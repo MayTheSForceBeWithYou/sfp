@@ -1,11 +1,11 @@
 import ArtifactFetcher, { Artifact } from '../../core/artifacts/ArtifactFetcher';
-import SFPLogger, { COLOR_ERROR, COLOR_SUCCESS, Logger, LoggerLevel } from '@flxbl-io/sfp-logger';
+import SFPLogger, { COLOR_ERROR, COLOR_SUCCESS, Logger, LoggerLevel } from '@n8codes/sfp-logger';
 import { Stage } from '../Stage';
 import ProjectConfig from '../../core/project/ProjectConfig';
 import semver = require('semver');
 import PromoteUnlockedPackageImpl from '../../core/package/promote/PromoteUnlockedPackageImpl';
 import { DeploymentType } from '../../core/deployers/DeploymentExecutor';
-import { COLOR_KEY_MESSAGE, COLOR_KEY_VALUE, COLOR_HEADER } from '@flxbl-io/sfp-logger';
+import { COLOR_KEY_MESSAGE, COLOR_KEY_VALUE, COLOR_HEADER } from '@n8codes/sfp-logger';
 import {
     PackageInstallationResult,
     PackageInstallationStatus,
@@ -791,9 +791,26 @@ export default class DeployImpl {
                 packageInfo.versionInstalledInOrg = packageInstalledInTheOrg.versionNumber;
             if (packageInstalledInTheOrg.isInstalled) {
                 if (!pkgDescriptor.alwaysDeploy) {
+                    SFPLogger.log(
+                        `Package ${sfpPackage.packageName}: incoming version ${sfpPackage.package_version_number} matches installed version ${packageInstalledInTheOrg.versionNumber}; filtering out from deployment queue`,
+                        LoggerLevel.DEBUG,
+                        this.props.logger
+                    );
                     packageInfo.isPackageInstalled = true;
                     clonedQueue.splice(i, 1);
+                } else {
+                    SFPLogger.log(
+                        `Package ${sfpPackage.packageName}: incoming version ${sfpPackage.package_version_number} matches installed version ${packageInstalledInTheOrg.versionNumber}, but keeping it because alwaysDeploy is enabled`,
+                        LoggerLevel.DEBUG,
+                        this.props.logger
+                    );
                 }
+            } else {
+                SFPLogger.log(
+                    `Package ${sfpPackage.packageName}: incoming version ${sfpPackage.package_version_number}, installed version ${packageInstalledInTheOrg.versionNumber ?? 'N/A'}; keeping in deployment queue`,
+                    LoggerLevel.DEBUG,
+                    this.props.logger
+                );
             }
         }
 

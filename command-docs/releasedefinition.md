@@ -1,17 +1,17 @@
-`@flxbl-io/sfp releasedefinition`
+`@n8codes/sfp releasedefinition`
 =================================
 
 Commands around managing release definition
 
-* [`@flxbl-io/sfp releasedefinition generate`](#flxbl-iosfp-releasedefinition-generate)
+* [`@n8codes/sfp releasedefinition generate`](#flxbl-iosfp-releasedefinition-generate)
 
-## `@flxbl-io/sfp releasedefinition generate`
+## `@n8codes/sfp releasedefinition generate`
 
 Generates release definition based on the artifacts at the specified head of source branch/commit ref
 
 ```
 USAGE
-  $ @flxbl-io/sfp releasedefinition generate -c <value> -f <value> -n <value> [-b <value>] [-d <value>] [--nopush] [--forcepush
+  $ @n8codes/sfp releasedefinition generate -c <value> -f <value> -n <value> [-b <value>] [-d <value>] [--nopush] [--forcepush
     ] [-m <value>] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS

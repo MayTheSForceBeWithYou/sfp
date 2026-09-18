@@ -2,7 +2,7 @@ import { jest, expect } from '@jest/globals';
 import SfpPackage, { PackageType, SfpPackageParams } from '../../../src/core/package/SfpPackage';
 import SfpPackageBuilder, { PackageCreationParams } from '../../../src/core/package/SfpPackageBuilder';
 import * as fs from "fs-extra";
-import { Logger } from '@flxbl-io/sfp-logger';
+import { Logger } from '@n8codes/sfp-logger';
 
 
 let packageType = PackageType.Source;

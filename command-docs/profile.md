@@ -1,19 +1,19 @@
-`@flxbl-io/sfp profile`
+`@n8codes/sfp profile`
 =======================
 
 Commands to manage profiles in your project or org
 
-* [`@flxbl-io/sfp profile merge`](#flxbl-iosfp-profile-merge)
-* [`@flxbl-io/sfp profile reconcile`](#flxbl-iosfp-profile-reconcile)
-* [`@flxbl-io/sfp profile retrieve`](#flxbl-iosfp-profile-retrieve)
+* [`@n8codes/sfp profile merge`](#flxbl-iosfp-profile-merge)
+* [`@n8codes/sfp profile reconcile`](#flxbl-iosfp-profile-reconcile)
+* [`@n8codes/sfp profile retrieve`](#flxbl-iosfp-profile-retrieve)
 
-## `@flxbl-io/sfp profile merge`
+## `@n8codes/sfp profile merge`
 
 Merge changes made in the profile directly in the org to the profile files in the local project
 
 ```
 USAGE
-  $ @flxbl-io/sfp profile merge -o <value> [-f <value>] [-n <value>] [-m <value>] [-d] [--apiversion <value>]
+  $ @n8codes/sfp profile merge -o <value> [-f <value>] [-n <value>] [-m <value>] [-d] [--apiversion <value>]
     [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -41,13 +41,13 @@ EXAMPLES
 
 _See code: [src/commands/profile/merge.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/profile/merge.ts)_
 
-## `@flxbl-io/sfp profile reconcile`
+## `@n8codes/sfp profile reconcile`
 
 Reconcile profiles in the local directory only with the attributes that are available in the target org
 
 ```
 USAGE
-  $ @flxbl-io/sfp profile reconcile -o <value> [-f <value>] [-n <value>] [-d <value>] [-s] [--apiversion <value>]
+  $ @n8codes/sfp profile reconcile -o <value> [-f <value>] [-n <value>] [-d <value>] [-s] [--apiversion <value>]
     [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
@@ -79,13 +79,13 @@ EXAMPLES
 
 _See code: [src/commands/profile/reconcile.ts](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/profile/reconcile.ts)_
 
-## `@flxbl-io/sfp profile retrieve`
+## `@n8codes/sfp profile retrieve`
 
 Retrieve profiles from the salesforce org with all its associated permissions. Common use case for this command is  to migrate profile changes from a integration environment to other higher environments [overcomes SFDX CLI Profile retrieve issue where it doesnt fetch the full profile unless the entire metadata is present in source], or retrieving profiles from production to lower environments for testing.
 
 ```
 USAGE
-  $ @flxbl-io/sfp profile retrieve -o <value> [-f <value>] [-n <value>] [-d] [--apiversion <value>] [--loglevel
+  $ @n8codes/sfp profile retrieve -o <value> [-f <value>] [-n <value>] [-d] [--apiversion <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS

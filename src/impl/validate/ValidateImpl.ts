@@ -115,11 +115,14 @@ export default class ValidateImpl implements PostDeployHook, PreDeployHook {
             let packagesInstalledInOrgMappedToCommits: { [p: string]: string };
 
             if (this.props.validationMode !== ValidationMode.INDIVIDUAL) {
-                let installedArtifacts = await this.orgAsSFPOrg.getInstalledArtifacts();
+                let installedArtifacts = await this.orgAsSFPOrg.getInstalledArtifacts(`CreatedDate`, this.logger);
                 if (installedArtifacts.length == 0) {
                     SFPLogger.log(COLOR_ERROR('Failed to query org for sfp Artifacts'));
                 }
-                packagesInstalledInOrgMappedToCommits = await mapInstalledArtifactstoPkgAndCommits(installedArtifacts);
+                packagesInstalledInOrgMappedToCommits = await mapInstalledArtifactstoPkgAndCommits(
+                    installedArtifacts,
+                    this.logger
+                );
                 this.printArtifactVersions(this.orgAsSFPOrg, installedArtifacts);
             }
             //In individual mode, always build changed packages only especially for validateAgainstOrg
@@ -177,6 +180,11 @@ export default class ValidateImpl implements PostDeployHook, PreDeployHook {
                     baseBranch: this.props.baseBranch,
                 },
             };
+            SFPLogger.log(
+                `Validation branch comparison diff options: validationMode=${this.props.validationMode}, useLatestGitTags=${impactedPackageDiffProps.diffOptions.useLatestGitTags}, packagesMappedToLastKnownCommitIdPresent=false, useBranchCompare=${impactedPackageDiffProps.diffOptions.useBranchCompare}`,
+                LoggerLevel.DEBUG,
+                this.logger
+            );
 
             SFPLogger.log(COLOR_KEY_MESSAGE(`Computing impacted packages as per the PR.Please wait..`), LoggerLevel.INFO,this.logger);
             const impactedPackageResolver = new ImpactedPackageResolver(impactedPackageDiffProps,this.logger);
@@ -381,6 +389,11 @@ export default class ValidateImpl implements PostDeployHook, PreDeployHook {
         //Build DiffOptions
         const diffOptions: PackageDiffOptions = buildDiffOption(this.props);
         buildProps.diffOptions = diffOptions;
+        SFPLogger.log(
+            `Validation build diff options: validationMode=${this.props.validationMode}, useLatestGitTags=${diffOptions.useLatestGitTags}, packagesMappedToLastKnownCommitIdPresent=${diffOptions.packagesMappedToLastKnownCommitId != null}, useBranchCompare=${diffOptions.useBranchCompare === true}`,
+            LoggerLevel.DEBUG,
+            this.logger
+        );
 
         //compute pkg overides
         buildProps.overridePackageTypes = computePackageOverrides(this.props);

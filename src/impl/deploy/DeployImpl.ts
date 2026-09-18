@@ -723,9 +723,26 @@ export default class DeployImpl {
                 packageInfo.versionInstalledInOrg = packageInstalledInTheOrg.versionNumber;
             if (packageInstalledInTheOrg.isInstalled) {
                 if (!pkgDescriptor.alwaysDeploy) {
+                    SFPLogger.log(
+                        `Package ${sfpPackage.packageName}: incoming version ${sfpPackage.package_version_number} matches installed version ${packageInstalledInTheOrg.versionNumber}; filtering out from deployment queue`,
+                        LoggerLevel.DEBUG,
+                        this.props.logger
+                    );
                     packageInfo.isPackageInstalled = true;
                     clonedQueue.splice(i, 1);
+                } else {
+                    SFPLogger.log(
+                        `Package ${sfpPackage.packageName}: incoming version ${sfpPackage.package_version_number} matches installed version ${packageInstalledInTheOrg.versionNumber}, but keeping it because alwaysDeploy is enabled`,
+                        LoggerLevel.DEBUG,
+                        this.props.logger
+                    );
                 }
+            } else {
+                SFPLogger.log(
+                    `Package ${sfpPackage.packageName}: incoming version ${sfpPackage.package_version_number}, installed version ${packageInstalledInTheOrg.versionNumber ?? 'N/A'}; keeping in deployment queue`,
+                    LoggerLevel.DEBUG,
+                    this.props.logger
+                );
             }
         }
 

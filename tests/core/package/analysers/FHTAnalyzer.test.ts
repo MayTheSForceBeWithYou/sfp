@@ -4,6 +4,11 @@ import SfpPackage, { PackageType } from '../../../../src/core/package/SfpPackage
 const fs = require('fs-extra');
 import { ComponentSet, SourceComponent, registry, VirtualDirectory } from '@salesforce/source-deploy-retrieve';
 import { VoidLogger } from '@n8codes/sfp-logger';
+import path from 'path';
+
+const CUSTOM_FIELD_DIR = path.join(path.sep, 'main', 'default', 'object', 'Test__c', 'fields');
+const CUSTOM_FIELD_XML = path.join(CUSTOM_FIELD_DIR, 'AccountManager__c.field-meta.xml');
+const CUSTOM_OBJECT_XML = path.join(path.sep, 'main', 'default', 'object', 'Test__c.object-meta.xml');
 
 let isYamlFileFound: boolean = true;
 
@@ -134,7 +139,7 @@ describe('FHT Analyzer', () => {
 
         const virtualFs: VirtualDirectory[] = [
             {
-                dirPath: '/main/default/object/Test__c/fields',
+                dirPath: CUSTOM_FIELD_DIR,
                 children: [
                     {
                         name: 'AccountManager__c.field-meta.xml',
@@ -159,11 +164,11 @@ describe('FHT Analyzer', () => {
             {
                 name: 'AccountManager__c',
                 type: registry.types.customobject.children.types.customfield,
-                xml: '/main/default/object/Test__c/fields/AccountManager__c.field-meta.xml',
+                xml: CUSTOM_FIELD_XML,
                 parent: SourceComponent.createVirtualComponent({
                     name: 'Test__c',
                     type: registry.types.customobject,
-                    xml: '/main/default/object/Test__c.object-meta.xml',
+                    xml: CUSTOM_OBJECT_XML,
                 }),
             },
             virtualFs
@@ -213,7 +218,7 @@ describe('FHT Analyzer', () => {
 
         const virtualFs: VirtualDirectory[] = [
             {
-                dirPath: '/main/default/object/Test__c/fields',
+                dirPath: CUSTOM_FIELD_DIR,
                 children: [
                     {
                         name: 'AccountManager__c.field-meta.xml',
@@ -238,11 +243,11 @@ describe('FHT Analyzer', () => {
             {
                 name: 'AccountManager__c',
                 type: registry.types.customobject.children.types.customfield,
-                xml: '/main/default/object/Test__c/fields/AccountManager__c.field-meta.xml',
+                xml: CUSTOM_FIELD_XML,
                 parent: SourceComponent.createVirtualComponent({
                     name: 'Test__c',
                     type: registry.types.customobject,
-                    xml: '/main/default/object/Test__c.object-meta.xml',
+                    xml: CUSTOM_OBJECT_XML,
                 }),
             },
             virtualFs
@@ -292,7 +297,7 @@ describe('FHT Analyzer', () => {
 
         const virtualFs: VirtualDirectory[] = [
             {
-                dirPath: '/main/default/object/Test__c/fields',
+                dirPath: CUSTOM_FIELD_DIR,
                 children: [
                     {
                         name: 'AccountManager__c.field-meta.xml',
@@ -317,11 +322,11 @@ describe('FHT Analyzer', () => {
             {
                 name: 'AccountManager__c',
                 type: registry.types.customobject.children.types.customfield,
-                xml: '/main/default/object/Test__c/fields/AccountManager__c.field-meta.xml',
+                xml: CUSTOM_FIELD_XML,
                 parent: SourceComponent.createVirtualComponent({
                     name: 'Test__c',
                     type: registry.types.customobject,
-                    xml: '/main/default/object/Test__c.object-meta.xml',
+                    xml: CUSTOM_OBJECT_XML,
                 }),
             },
             virtualFs

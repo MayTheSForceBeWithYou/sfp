@@ -47,8 +47,18 @@ export default class PackageDiffImpl {
         let tag: string;
         if (!this.diffOptions?.useLatestGitTags && this.diffOptions?.packagesMappedToLastKnownCommitId != null) {
             tag = this.getLatestCommitFromMap(this.sfdx_package, this.diffOptions?.packagesMappedToLastKnownCommitId);
+            SFPLogger.log(
+                `Package ${this.sfdx_package} baseline source: org-installed commit map, resolved commit: ${tag ?? 'N/A'}`,
+                LoggerLevel.DEBUG,
+                this.logger
+            );
         } else {
             tag = await this.getLatestTagFromGit(git, this.sfdx_package);
+            SFPLogger.log(
+                `Package ${this.sfdx_package} baseline source: latest git tag, resolved value: ${tag ?? 'N/A'}`,
+                LoggerLevel.DEBUG,
+                this.logger
+            );
         }
 
         if (tag) {
@@ -60,6 +70,11 @@ export default class PackageDiffImpl {
                 if(this.diffOptions?.useBranchCompare)
                 {
                  const mergeBase = await git.raw(['merge-base', this.diffOptions.branch, this.diffOptions.baseBranch]);
+                 SFPLogger.log(
+                    `Package ${this.sfdx_package} branch compare baseline resolved merge-base ${mergeBase.trim()} between ${this.diffOptions.branch} and ${this.diffOptions.baseBranch}`,
+                    LoggerLevel.DEBUG,
+                    this.logger
+                 );
                  modified_files = await git.diff(['--no-renames','--name-only', this.diffOptions.branch, mergeBase.trim()]);
                 }
                 else
@@ -72,7 +87,7 @@ export default class PackageDiffImpl {
                     SFPLogger.log(COLOR_WARNING(dedent(`Unable to compute diff, 
                     The head of the branch is not reachable from the commit id ${tag} for ${this.sfdx_package}
                     Attempting to build the package without diffing against the previous version`)),LoggerLevel.INFO,this.logger);
-                    return { isToBeBuilt: true, reason: `Previous version is from an earlier branch` };
+                    return this.logDecision(true, `Previous version is from an earlier branch`, tag);
                 }
                 else
                 {
@@ -85,8 +100,18 @@ export default class PackageDiffImpl {
             }
 
             let packageType: string = ProjectConfig.getPackageType(projectConfig, this.sfdx_package);
+            SFPLogger.log(
+                `Package ${this.sfdx_package} found ${modified_files.length} modified file(s) before forceignore filtering`,
+                LoggerLevel.DEBUG,
+                this.logger
+            );
 
             if (packageType !== PackageType.Data) modified_files = this.applyForceIgnoreToModifiedFiles(modified_files);
+            SFPLogger.log(
+                `Package ${this.sfdx_package} found ${modified_files.length} modified file(s) after forceignore filtering`,
+                LoggerLevel.DEBUG,
+                this.logger
+            );
 
             SFPLogger.log(
                 `Checking for changes in source directory ${path.normalize(pkgDescriptor.path)}`,
@@ -101,10 +126,15 @@ export default class PackageDiffImpl {
                 let normalizedFilename = path.normalize(filename);
             
                 let relativePath = path.relative(normalizedPkgPath, normalizedFilename);
+                SFPLogger.log(
+                    `Package ${this.sfdx_package} checking whether ${normalizedFilename} is within ${normalizedPkgPath} => ${!relativePath.startsWith('..')}`,
+                    LoggerLevel.TRACE,
+                    this.logger
+                );
             
                 if (!relativePath.startsWith('..')) {
                     SFPLogger.log(`Found change(s) in ${filename}`, LoggerLevel.TRACE, this.logger);
-                    return { isToBeBuilt: true, reason: `Found change(s) in package`, tag: tag };
+                    return this.logDecision(true, `Found change(s) in package`, tag);
                 }
             }
 
@@ -115,16 +145,34 @@ export default class PackageDiffImpl {
             );
             let isPackageDescriptorChanged = await this.isPackageDescriptorChanged(git, tag, pkgDescriptor);
             if (isPackageDescriptorChanged) {
-                return { isToBeBuilt: true, reason: `Package Descriptor Changed`, tag: tag };
+                return this.logDecision(true, `Package Descriptor Changed`, tag);
             }
 
-            return { isToBeBuilt: false, reason: `No changes found`, tag: tag };
+            return this.logDecision(false, `No changes found`, tag);
         } else {
 
             if(this.diffOptions?.useBranchCompare)
             {
                 const mergeBase = await git.raw(['merge-base', this.diffOptions.branch, this.diffOptions.baseBranch]);
+                SFPLogger.log(
+                    `Package ${this.sfdx_package} baseline source: branch compare, resolved merge-base ${mergeBase.trim()} between ${this.diffOptions.branch} and ${this.diffOptions.baseBranch}`,
+                    LoggerLevel.DEBUG,
+                    this.logger
+                );
                 let modified_files = await git.diff(['--no-renames','--name-only', this.diffOptions.branch, mergeBase.trim()]);
+                SFPLogger.log(
+                    `Package ${this.sfdx_package} found ${modified_files.length} modified file(s) before forceignore filtering`,
+                    LoggerLevel.DEBUG,
+                    this.logger
+                );
+
+                let packageType: string = ProjectConfig.getPackageType(projectConfig, this.sfdx_package);
+                if (packageType !== PackageType.Data) modified_files = this.applyForceIgnoreToModifiedFiles(modified_files);
+                SFPLogger.log(
+                    `Package ${this.sfdx_package} found ${modified_files.length} modified file(s) after forceignore filtering`,
+                    LoggerLevel.DEBUG,
+                    this.logger
+                );
 
                  // Check whether the package has been modified
                 for (let filename of modified_files) {
@@ -133,13 +181,18 @@ export default class PackageDiffImpl {
                     let normalizedFilename = path.normalize(filename);
                 
                     let relativePath = path.relative(normalizedPkgPath, normalizedFilename);
+                    SFPLogger.log(
+                        `Package ${this.sfdx_package} checking whether ${normalizedFilename} is within ${normalizedPkgPath} => ${!relativePath.startsWith('..')}`,
+                        LoggerLevel.TRACE,
+                        this.logger
+                    );
                 
                     if (!relativePath.startsWith('..')) {
                         SFPLogger.log(`Found change(s) in ${filename}`, LoggerLevel.TRACE, this.logger);
-                        return { isToBeBuilt: true, reason: `Found change(s) in package`, tag: tag };
+                        return this.logDecision(true, `Found change(s) in package`, tag);
                     }
                 }
-                return { isToBeBuilt: false, reason: `No changes found`, tag: tag };
+                return this.logDecision(false, `No changes found`, tag);
 
             }
             else {
@@ -148,7 +201,7 @@ export default class PackageDiffImpl {
                     LoggerLevel.TRACE,
                     this.logger
                 );
-                return { isToBeBuilt: true, reason: `Previous version not found` };
+                return this.logDecision(true, `Previous version not found`);
             }
         }
     }
@@ -194,6 +247,11 @@ export default class PackageDiffImpl {
 
         if (!lodash.isEqual(packageDescriptor, packageDescriptorFromLatestTag)) {
             SFPLogger.log(`Found change in ${this.sfdx_package} package descriptor`, LoggerLevel.TRACE, this.logger);
+            SFPLogger.log(
+                `Package ${this.sfdx_package} descriptor diff detected. Previous: ${JSON.stringify(packageDescriptorFromLatestTag)} Current: ${JSON.stringify(packageDescriptor)}`,
+                LoggerLevel.DEBUG,
+                this.logger
+            );
 
             //skip check and ignore
             if (this.diffOptions?.skipPackageDescriptorChange) {
@@ -209,5 +267,14 @@ export default class PackageDiffImpl {
         } else {
             return null;
         }
+    }
+
+    private logDecision(isToBeBuilt: boolean, reason: string, tag?: string): { isToBeBuilt: boolean; reason: string; tag?: string } {
+        SFPLogger.log(
+            `Package ${this.sfdx_package} final build decision: ${isToBeBuilt ? 'build' : 'skip'} (${reason})${tag ? ` using baseline ${tag}` : ''}`,
+            LoggerLevel.DEBUG,
+            this.logger
+        );
+        return { isToBeBuilt, reason, tag };
     }
 }

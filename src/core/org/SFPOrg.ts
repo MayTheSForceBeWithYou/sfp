@@ -14,11 +14,22 @@ export default class SFPOrg extends Org {
      */
     public async getInstalledArtifacts(orderBy: string = `CreatedDate`, logger?: Logger) {
         let records = [];
+        const query = `SELECT Id, Name, CommitId__c, Version__c, Tag__c FROM SfpowerscriptsArtifact2__c ORDER BY ${orderBy} ASC`;
         try {
+            SFPLogger.log(
+                `Fetching installed artifacts from org ${this.getUsername()} using query: ${query}`,
+                LoggerLevel.DEBUG,
+                logger
+            );
             records = await QueryHelper.query<SfpowerscriptsArtifact2__c>(
-                `SELECT Id, Name, CommitId__c, Version__c, Tag__c FROM SfpowerscriptsArtifact2__c ORDER BY ${orderBy} ASC`,
+                query,
                 this.getConnection(),
                 false
+            );
+            SFPLogger.log(
+                `Fetched ${records.length} installed artifact record(s) from org ${this.getUsername()}`,
+                LoggerLevel.DEBUG,
+                logger
             );
             return records;
         } catch (error) {
@@ -29,6 +40,7 @@ export default class SFPOrg extends Org {
                 LoggerLevel.WARN,
                 logger
             );
+            SFPLogger.log(`Raw error while fetching installed artifacts: ${error}`, LoggerLevel.DEBUG, logger);
         }
         return records;
     }
@@ -47,12 +59,18 @@ export default class SFPOrg extends Org {
         try {
             SFPLogger.log(`Querying for version of ${sfpPackage.packageName} in the Org.`, LoggerLevel.TRACE, logger);
             result.isInstalled = false;
-            let installedArtifacts = await this.getInstalledArtifacts();
+            let installedArtifacts = await this.getInstalledArtifacts(`CreatedDate`, logger);
             let packageName = sfpPackage.packageName;
             for (const artifact of installedArtifacts) {
+                const isVersionMatch = artifact.Name === packageName && artifact.Version__c === sfpPackage.package_version_number;
+                SFPLogger.log(
+                    `Artifact install check for package ${packageName}: org artifact ${artifact.Name} version ${artifact.Version__c} vs requested ${sfpPackage.package_version_number} => ${isVersionMatch ? 'match' : 'no match'}`,
+                    LoggerLevel.TRACE,
+                    logger
+                );
                 if (artifact.Name === packageName) {
                     result.versionNumber = artifact.Version__c;
-                    if (artifact.Version__c === sfpPackage.package_version_number) {
+                    if (isVersionMatch) {
                         result.isInstalled = true;
                         return result;
                     }

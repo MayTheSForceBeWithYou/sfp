@@ -7,6 +7,7 @@ import ProjectConfig from '../../project/ProjectConfig';
 import GitTags from '../../git/GitTags';
 import lodash = require('lodash');
 import { EOL } from 'os';
+import { inspect } from 'util';
 import { PackageType } from '../SfpPackage';
 import dedent from 'dedent';
 
@@ -254,7 +255,7 @@ export default class PackageDiffImpl {
             SFPLogger.log(`Found change in ${this.sfdx_package} package descriptor`, LoggerLevel.TRACE, this.logger);
             const descriptorChanges = this.getPackageDescriptorChanges(packageDescriptorFromLatestTag, packageDescriptor);
             SFPLogger.log(
-                `Package ${this.sfdx_package} descriptor diff detected for keys: ${descriptorChanges.map((change) => `${change.key} (${JSON.stringify(change.previousValue)} => ${JSON.stringify(change.currentValue)})`).join(', ')}`,
+                `Package ${this.sfdx_package} descriptor diff detected for keys: ${descriptorChanges.map((change) => `${change.key} (${this.safeLogValue(change.previousValue)} => ${this.safeLogValue(change.currentValue)})`).join(', ')}`,
                 LoggerLevel.DEBUG,
                 this.logger
             );
@@ -302,6 +303,14 @@ export default class PackageDiffImpl {
                 previousValue: packageDescriptorFromLatestTag?.[key],
                 currentValue: packageDescriptor?.[key],
             }));
+    }
+
+    private safeLogValue(value: unknown): string {
+        return inspect(value, {
+            depth: 3,
+            breakLength: Infinity,
+            maxArrayLength: 20,
+        });
     }
 
     private logDecision(isToBeBuilt: boolean, reason: string, tag?: string): { isToBeBuilt: boolean; reason: string; tag?: string } {

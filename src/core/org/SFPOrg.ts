@@ -18,7 +18,7 @@ export default class SFPOrg extends Org {
         const query = `SELECT Id, Name, CommitId__c, Version__c, Tag__c FROM SfpowerscriptsArtifact2__c ORDER BY ${sanitizedOrderBy} ASC`;
         try {
             SFPLogger.log(
-                `Fetching installed artifacts from org ${this.getUsername()} using query: ${query}`,
+                `Fetching installed artifacts from org ${this.getUsername()} using artifact query ordered by ${sanitizedOrderBy}`,
                 LoggerLevel.DEBUG,
                 logger
             );

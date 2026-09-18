@@ -75,11 +75,15 @@ export default class PackageDiffImpl {
                     LoggerLevel.DEBUG,
                     this.logger
                  );
-                 modified_files = await git.diff(['--no-renames','--name-only', this.diffOptions.branch, mergeBase.trim()]);
+                 modified_files = this.normalizeModifiedFiles(
+                    await git.diff(['--no-renames','--name-only', this.diffOptions.branch, mergeBase.trim()])
+                 );
                 }
                 else
                 {
-                 modified_files = await git.diff([`${tag}`, `HEAD`, `--no-renames`, `--name-only`]);
+                 modified_files = this.normalizeModifiedFiles(
+                    await git.diff([`${tag}`, `HEAD`, `--no-renames`, `--name-only`])
+                 );
                 }
             } catch (error) {
                 if(this.diffOptions?.fallBackToNoTag)
@@ -160,6 +164,7 @@ export default class PackageDiffImpl {
                     this.logger
                 );
                 let modified_files = await git.diff(['--no-renames','--name-only', this.diffOptions.branch, mergeBase.trim()]);
+                modified_files = this.normalizeModifiedFiles(modified_files);
                 SFPLogger.log(
                     `Package ${this.sfdx_package} found ${modified_files.length} modified file(s) before forceignore filtering`,
                     LoggerLevel.DEBUG,
@@ -238,7 +243,7 @@ export default class PackageDiffImpl {
         let projectConfigJson: string = await git.show([`${latestTag}:sfdx-project.json`]);
         let projectConfig = JSON.parse(projectConfigJson);
 
-        let packageDescriptorFromLatestTag: string;
+        let packageDescriptorFromLatestTag: Record<string, unknown>;
         for (let dir of projectConfig['packageDirectories']) {
             if (this.sfdx_package === dir.package) {
                 packageDescriptorFromLatestTag = dir;
@@ -247,8 +252,9 @@ export default class PackageDiffImpl {
 
         if (!lodash.isEqual(packageDescriptor, packageDescriptorFromLatestTag)) {
             SFPLogger.log(`Found change in ${this.sfdx_package} package descriptor`, LoggerLevel.TRACE, this.logger);
+            const descriptorChanges = this.getPackageDescriptorChanges(packageDescriptorFromLatestTag, packageDescriptor);
             SFPLogger.log(
-                `Package ${this.sfdx_package} descriptor diff detected. Previous: ${JSON.stringify(packageDescriptorFromLatestTag)} Current: ${JSON.stringify(packageDescriptor)}`,
+                `Package ${this.sfdx_package} descriptor diff detected for keys: ${descriptorChanges.map((change) => `${change.key} (${JSON.stringify(change.previousValue)} => ${JSON.stringify(change.currentValue)})`).join(', ')}`,
                 LoggerLevel.DEBUG,
                 this.logger
             );
@@ -267,6 +273,35 @@ export default class PackageDiffImpl {
         } else {
             return null;
         }
+    }
+
+    private normalizeModifiedFiles(modifiedFiles: string[] | string): string[] {
+        if (Array.isArray(modifiedFiles)) {
+            return modifiedFiles;
+        }
+
+        return modifiedFiles
+            .split(/\r?\n/)
+            .map((modifiedFile) => modifiedFile.trim())
+            .filter((modifiedFile) => modifiedFile.length > 0);
+    }
+
+    private getPackageDescriptorChanges(
+        packageDescriptorFromLatestTag: Record<string, unknown>,
+        packageDescriptor: Record<string, unknown>
+    ): { key: string; previousValue: unknown; currentValue: unknown }[] {
+        const keys = new Set([
+            ...Object.keys(packageDescriptorFromLatestTag ?? {}),
+            ...Object.keys(packageDescriptor ?? {}),
+        ]);
+
+        return Array.from(keys)
+            .filter((key) => !lodash.isEqual(packageDescriptorFromLatestTag?.[key], packageDescriptor?.[key]))
+            .map((key) => ({
+                key,
+                previousValue: packageDescriptorFromLatestTag?.[key],
+                currentValue: packageDescriptor?.[key],
+            }));
     }
 
     private logDecision(isToBeBuilt: boolean, reason: string, tag?: string): { isToBeBuilt: boolean; reason: string; tag?: string } {

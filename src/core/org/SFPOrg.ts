@@ -14,7 +14,8 @@ export default class SFPOrg extends Org {
      */
     public async getInstalledArtifacts(orderBy: string = `CreatedDate`, logger?: Logger) {
         let records = [];
-        const query = `SELECT Id, Name, CommitId__c, Version__c, Tag__c FROM SfpowerscriptsArtifact2__c ORDER BY ${orderBy} ASC`;
+        const sanitizedOrderBy = this.sanitizeArtifactOrderBy(orderBy);
+        const query = `SELECT Id, Name, CommitId__c, Version__c, Tag__c FROM SfpowerscriptsArtifact2__c ORDER BY ${sanitizedOrderBy} ASC`;
         try {
             SFPLogger.log(
                 `Fetching installed artifacts from org ${this.getUsername()} using query: ${query}`,
@@ -156,6 +157,11 @@ export default class SFPOrg extends Org {
             }
         }
         return null;
+    }
+
+    private sanitizeArtifactOrderBy(orderBy: string): string {
+        const allowedOrderByFields = new Set(['Id', 'Name', 'CommitId__c', 'Version__c', 'Tag__c', 'CreatedDate']);
+        return allowedOrderByFields.has(orderBy) ? orderBy : 'CreatedDate';
     }
     /**
      * Retrieves all packages(recognized by Salesforce) installed in the org

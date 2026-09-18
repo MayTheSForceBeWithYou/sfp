@@ -252,12 +252,14 @@ export default class PackageDiffImpl {
 
         if (!lodash.isEqual(packageDescriptor, packageDescriptorFromLatestTag)) {
             SFPLogger.log(`Found change in ${this.sfdx_package} package descriptor`, LoggerLevel.TRACE, this.logger);
-            const descriptorChanges = this.getPackageDescriptorChanges(packageDescriptorFromLatestTag, packageDescriptor);
-            SFPLogger.log(
-                `Package ${this.sfdx_package} descriptor diff detected for keys: ${descriptorChanges.map((change) => `${change.key} (${JSON.stringify(change.previousValue)} => ${JSON.stringify(change.currentValue)})`).join(', ')}`,
-                LoggerLevel.DEBUG,
-                this.logger
-            );
+            if (SFPLogger.logLevel <= LoggerLevel.DEBUG) {
+                const descriptorChanges = this.getPackageDescriptorChanges(packageDescriptorFromLatestTag, packageDescriptor);
+                SFPLogger.log(
+                    `Package ${this.sfdx_package} descriptor diff detected for keys: ${descriptorChanges.map((change) => `${change.key} (${JSON.stringify(change.previousValue)} => ${JSON.stringify(change.currentValue)})`).join(', ')}`,
+                    LoggerLevel.DEBUG,
+                    this.logger
+                );
+            }
 
             //skip check and ignore
             if (this.diffOptions?.skipPackageDescriptorChange) {
